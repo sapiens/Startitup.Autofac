@@ -1,3 +1,3 @@
 # Strapboot.Autofac
 
-Integration of [Strapboot](https://github.com/sapiens/Strapboot) with Autofac
+Integration of [Startitup](https://github.com/sapiens/Startitup) with Autofac

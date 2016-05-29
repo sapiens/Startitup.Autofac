@@ -11,13 +11,13 @@
             "autofac",
             "startup"
         ],
-        "projectUrl": "https://github.com/sapiens/Strapboot.Autofac",
+        "projectUrl": "https://github.com/sapiens/startitup.autofac",
         "licenseUrl": "https://github.com/sapiens/Strapboot.Autofac/blob/master/LICENSE"
     },
     "dependencies": {
         "Autofac": "4.0.0-rc2-240",
         "CavemanTools": "4.4.0",
-        "StartItUp": "2.0.0-beta1"
+        "StartItUp": "2.0.0"
     },
     "frameworks": {
         "netstandard1.5": {

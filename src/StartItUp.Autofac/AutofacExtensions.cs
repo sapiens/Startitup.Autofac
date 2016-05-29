@@ -4,9 +4,8 @@ using System.Linq;
 using System.Reflection;
 using Autofac;
 using CavemanTools;
-using StartItUp;
 
-namespace Strapboot
+namespace StartItUp
 {
     /// <summary>
     /// 

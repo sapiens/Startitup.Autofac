@@ -13,6 +13,7 @@ namespace StartItUp
     public static class AutofacExtensions
     {
         const string Key = "__autofac";
+        private const string BuilderKey = "__autofac_builder";
 
         /// <summary>
         /// Configure autofac
@@ -21,11 +22,24 @@ namespace StartItUp
         /// <param name="cfg"></param>
         public static void ConfigureContainer(this StartupContext ctx, Action<ContainerBuilder> cfg)
         {
-            var data = ctx.Container();
-            var cb=new ContainerBuilder();
+            ctx.ContextData.Remove(Key);// delete the built and cached container
+            var cb = GetContainerBuilder(ctx);            
             cfg(cb);
-            cb.Update(data.ComponentRegistry);            
+            
         }
+
+        /// <summary>
+        /// Gets the existing builder or creates an empty one
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
+        private static ContainerBuilder GetContainerBuilder(this StartupContext ctx)
+       => ctx.ContextData.GetValueOrCreate(BuilderKey, () =>
+       {
+           var builder = new ContainerBuilder();
+           builder.RegisterInstance(ctx).As(ctx.GetType()).SingleInstance();
+           return builder;
+       });
 
         /// <summary>
         /// Gets the built container
@@ -33,12 +47,7 @@ namespace StartItUp
         /// <param name="ctx"></param>
         /// <returns></returns>
         public static ILifetimeScope Container(this StartupContext ctx)
-            => ctx.ContextData.GetValueOrCreate(Key, () =>
-            {
-                var builder = new ContainerBuilder();
-                builder.RegisterInstance(ctx).As(ctx.GetType()).SingleInstance();
-                return builder.Build();
-            });
+            => ctx.ContextData.GetValueOrCreate(Key,()=>ctx.GetContainerBuilder().Build());
 
         ///  <summary>
         ///   Register types ending with specified suffix from the specified assemblies

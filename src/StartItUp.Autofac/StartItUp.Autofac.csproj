@@ -20,11 +20,12 @@
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.4.0" />
-    <PackageReference Include="CavemanTools" Version="4.6.0" />
+    <PackageReference Include="CavemanTools" Version="4.9.0" />
     <PackageReference Include="StartItUp" Version="2.0.0" />
   </ItemGroup>
 

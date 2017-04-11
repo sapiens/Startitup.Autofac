@@ -33,7 +33,7 @@ namespace StartItUp
         /// </summary>
         /// <param name="ctx"></param>
         /// <returns></returns>
-        private static ContainerBuilder GetContainerBuilder(this StartupContext ctx)
+        public static ContainerBuilder GetContainerBuilder(this StartupContext ctx)
        => ctx.ContextData.GetValueOrCreate(BuilderKey, () =>
        {
            var builder = new ContainerBuilder();
